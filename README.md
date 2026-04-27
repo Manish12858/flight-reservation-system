@@ -4,18 +4,18 @@ A production-style **microservices-based airline booking system** built using Sp
 
 ---
 
-## 🚀 Key Highlights
+## Key Highlights
 
-- 🧩 Microservices architecture (Reservation + Check-In services)
-- 🔁 Inter-service communication using REST APIs
-- 🪑 Dynamic seat selection with availability tracking
-- 📄 PDF ticket generation with QR code
-- 📧 Automated email delivery with ticket attachment
-- 🧱 Clean layered architecture (Controller → Service → Repository)
+- Microservices architecture (Reservation + Check-In services)
+- Inter-service communication using REST APIs
+- Dynamic seat selection with availability tracking
+- PDF ticket generation with QR code
+- Automated email delivery with ticket attachment
+- Clean layered architecture (Controller → Service → Repository)
 
 ---
 
-## 🏗️ Microservices Architecture
+## Microservices Architecture
 
 This system is split into independent services:
 
@@ -53,34 +53,34 @@ This system is split into independent services:
 
 ## ✨ Features
 
-### 🔐 User Management
+### User Management
 - Registration & login with validation  
 
-### 🔍 Flight Search
+### Flight Search
 - Search by source, destination, and date  
 
-### 🪑 Seat Selection
+### Seat Selection
 - Real-time seat availability per flight  
 - Prevents double booking  
 
-### 🧾 Booking System
+### Booking System
 - Complete reservation flow  
 - Generates unique PNR  
 
-### 📄 Ticket Generation
+### Ticket Generation
 - PDF boarding pass with QR code  
 - Downloadable via UI  
 
-### 📧 Email Service
+### Email Service
 - Sends ticket automatically after booking  
 
-### 🔁 Check-In System
+### Check-In System
 - REST-based integration  
 - Fetch reservation → complete check-in  
 
 ---
 
-## 🔁 End-to-End Flow
+## End-to-End Flow
 
 User → Search Flights → Select Flight → Select Seat  
 → Enter Details → Book → Generate Ticket → Email Sent  
@@ -88,7 +88,7 @@ User → Search Flights → Select Flight → Select Seat
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 Project Structure:
 - flight-reservation (Reservation Microservice)
@@ -107,7 +107,7 @@ Project Structure:
   - services
   - templates
 
-## 🔗 API Endpoints
+## API Endpoints
 
 ### Reservation Service (8080)
 - GET /findFlights  
@@ -120,7 +120,7 @@ Project Structure:
 
 ---
 
-## ⚙️ Setup & Run
+## Setup & Run
 
 ### Prerequisites
 - Java 21+
@@ -143,7 +143,7 @@ mvn spring-boot:run
 
 ---
 
-## 🧠 Engineering Challenges Solved
+## Engineering Challenges Solved
 
 - Designed service-to-service communication via REST  
 - Resolved endpoint mismatches between microservices  
@@ -154,7 +154,7 @@ mvn spring-boot:run
 
 ---
 
-## 📈 Future Improvements
+## Future Improvements
 
 - API Gateway (Spring Cloud Gateway)
 - real payment gateway
@@ -165,7 +165,7 @@ mvn spring-boot:run
 
 ---
 
-## 💡 Why This Project Stands Out
+## Why This Project Stands Out
 
 - Microservices-based design (not monolithic)  
 - Real-world airline workflow  
@@ -175,7 +175,7 @@ mvn spring-boot:run
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 Manish Kumar  
 Java Backend Developer  
