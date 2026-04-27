@@ -102,6 +102,8 @@ Project Structure:
 
 - flight-checkin (Check-In Microservice)
   - controllers
+  - dtos
+  - utility
   - services
   - templates
 
