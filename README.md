@@ -90,20 +90,20 @@ User → Search Flights → Select Flight → Select Seat
 
 ## 📁 Project Structure
 
-flight-reservation-system
-├── flight-reservation   (Microservice 1)
-│   ├── controllers
-│   ├── services
-│   ├── repos
-│   ├── entities
-│   └── templates
-│
-├── flight-checkin       (Microservice 2)
-│   ├── controllers
-│   ├── services
-│   └── templates
+Project Structure:
+- flight-reservation (Reservation Microservice)
+  - controllers
+  - utility
+  - dtos
+  - services
+  - repositories
+  - entities
+  - templates
 
----
+- flight-checkin (Check-In Microservice)
+  - controllers
+  - services
+  - templates
 
 ## 🔗 API Endpoints
 
