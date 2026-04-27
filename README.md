@@ -90,18 +90,18 @@ User → Search Flights → Select Flight → Select Seat
 
 ## 📁 Project Structure
 
-flight-reservation-system/
-├── flight-reservation/   (Microservice 1)
-│   ├── controllers/
-│   ├── services/
-│   ├── repos/
-│   ├── entities/
-│   └── templates/
+flight-reservation-system
+├── flight-reservation   (Microservice 1)
+│   ├── controllers
+│   ├── services
+│   ├── repos
+│   ├── entities
+│   └── templates
 │
-├── flight-checkin/       (Microservice 2)
-│   ├── controllers/
-│   ├── services/
-│   └── templates/
+├── flight-checkin       (Microservice 2)
+│   ├── controllers
+│   ├── services
+│   └── templates
 
 ---
 
