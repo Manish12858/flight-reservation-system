@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .active {
+            background: white;
+            color: #2c3e50 !important;
+            font-weight: bold;
+        }
+
+        /* MAIN */
+        .main {
+            padding: 40px;
+            flex: 1;
+        }
+
+        /* WELCOME */
+        .welcome {
+            background: linear-gradient(to right, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+
+        .welcome h2 {
+            margin: 0;
+        }
+
+        /* SECTION TITLE */
+        .section-title {
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* BOOKING CARD */
+        .card {
+            background: white;
+            padding: 18px;
+            border-radius: 12px;
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid #11998e;
+        }
+
+        .card p {
+            margin: 5px 0;
+        }
+
+        /* BUTTON */
+        .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #11998e;
+            color: white;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #0d7f74;
+        }
+
+        /* EMPTY STATE */
+        .empty {
+            margin-top: 15px;
+            color: #777;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- ✅ NAVBAR -->
+<div class="navbar">
+    <div class="logo">✈️ FlyHigh</div>
+
+    <div class="nav-links">
+        <a href="http://localhost:8080/dashboard" class="active">Dashboard</a>
+        <a href="http://localhost:8080/findFlights">Book Flight</a>
+        <a href="http://localhost:8081/flightcheckin/showStartCheckIn">Check-In</a>
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+<div class="main">
+
+    <!-- ✅ WELCOME -->
+    <div class="welcome">
+        <h2>Welcome, <span th:text="${user.firstName}"></span> ✈️</h2>
+        <p>
+            Manage your bookings and plan your next journey with ease.
+        </p>
+    </div>
+
+    <!-- ✅ BOOKINGS -->
+    <div class="section-title">Your Bookings</div>
+
+    <!--  NO BOOKINGS -->
+    <div th:if="${#lists.isEmpty(reservations)}" class="empty">
+        You have no bookings yet.
+
+        <br><br>
+
+        <a href="/findFlights" class="btn">Book Your First Flight</a>
+    </div>
+
+    <!--  SHOW BOOKINGS -->
+    <div th:if="${!#lists.isEmpty(reservations)}">
+
+        <div th:each="res : ${reservations}" class="card">
+
+            <p><b>PNR:</b> <span th:text="${res.id}"></span></p>
+
+            <p><b>Flight:</b>
+                <span th:text="${res.flight.flightNumber}"></span>
+            </p>
+
+            <p><b>Route:</b>
+                <span th:text="${res.flight.departureCity}"></span> →
+                <span th:text="${res.flight.arrivalCity}"></span>
+            </p>
+
+            <p><b>Date:</b>
+                <span th:text="${#dates.format(res.flight.dateOfDeparture,'dd MMM yyyy')}"></span>
+            </p>
+
+            <p><b>Status:</b>
+                <span style="color: green;">Confirmed</span>
+            </p>
+
+        </div>
+
+        <!--  BOOK NEW -->
+        <a href="/findFlights" class="btn">Book Another Flight</a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

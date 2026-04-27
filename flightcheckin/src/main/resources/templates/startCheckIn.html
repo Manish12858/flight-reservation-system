@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Start Check-In</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: #f1f1f1;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        /* CENTER */
+        .main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* CARD */
+        .card {
+            width: 450px;
+            padding: 40px;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-bottom: 15px;
+        }
+
+        input:focus {
+            border-color: #4ca1af;
+            outline: none;
+        }
+
+        .btn-checkin {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #11998e, #38ef7d);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-checkin:hover {
+            transform: scale(1.03);
+        }
+
+        .note {
+            font-size: 13px;
+            margin-top: 15px;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div><b>✈️ FlyHigh</b></div>
+
+    <div>
+        <a href="http://localhost:8080/">Home</a>
+        <a href="http://localhost:8080/findFlights">Book Flight</a>
+    </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <div class="card">
+
+        <h2>Start Check-In ✈️</h2>
+
+        <p>Enter your Booking ID (PNR) to proceed with check-in</p>
+
+        <form th:action="@{/startCheckIn}" method="get">
+
+            <input type="text" name="reservationId"
+                   placeholder="Enter Booking ID (PNR)" required/>
+
+            <button class="btn-checkin">Continue Check-In</button>
+
+        </form>
+
+        <div class="note">
+            Tip: You can find your Booking ID in your email confirmation.
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

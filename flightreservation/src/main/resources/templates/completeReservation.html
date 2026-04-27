@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Complete Reservation</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: #f1f1f1;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        /* CENTER */
+        .main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* CARD */
+        .card {
+            width: 550px;
+            padding: 40px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section p {
+            margin: 5px 0;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        input:focus {
+            border-color: #4ca1af;
+            outline: none;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #11998e, #38ef7d);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover {
+            transform: scale(1.03);
+        }
+
+        .flight-info {
+            background: #f7f7f7;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div><b>✈️ FlyHigh</b></div>
+
+    <div>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/findFlights}">Search Flights</a>
+    </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <div class="card">
+
+        <h2>Complete Reservation ✈️</h2>
+
+        <!-- FLIGHT DETAILS -->
+        <div class="section flight-info">
+
+            <h3>Flight Details</h3>
+
+            <p><b>Airlines:</b> <span th:text="${flight.operatingAirlines}"></span></p>
+            <p><b>Flight No:</b> <span th:text="${flight.flightNumber}"></span></p>
+            <p><b>From:</b> <span th:text="${flight.departureCity}"></span></p>
+            <p><b>To:</b> <span th:text="${flight.arrivalCity}"></span></p>
+            <p><b>Date:</b> <span th:text="${flight.dateOfDeparture}"></span></p>
+
+        </div>
+
+        <!-- PASSENGER FORM -->
+        <form th:action="@{/completeReservation}" method="post">
+
+            <input type="hidden" name="flightId" th:value="${flight.id}" />
+
+            <h3>Passenger Details</h3>
+
+            <input name="passengerFirstName" placeholder="First Name" required/>
+            <input name="passengerLastName" placeholder="Last Name" required/>
+            <input type="email" name="passengerEmail" placeholder="Email" required/>
+            <input type="tel" name="passengerPhone" placeholder="Phone Number" required/>
+
+            <!-- PAYMENT INFO -->
+            <h3>Payment Details</h3>
+
+            <input name="cardNumber" placeholder="Card Number" required/>
+            <input name="nameOnCard" placeholder="Name on Card" required/>
+            <input name="cvv" placeholder="CVV" required/>
+
+            <button class="btn-submit">Confirm Booking</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+/* GLOBAL */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* CONTAINER */
+.container {
+    width: 90%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+/* TABLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* TABLE HEADER */
+th {
+    padding: 15px;
+    text-align: left;
+    background: linear-gradient(to right, #11998e, #38ef7d);
+    color: white;
+    font-weight: 600;
+}
+
+/* TABLE DATA */
+td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+/* ROW STRIPES */
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* HOVER EFFECT */
+tr:hover {
+    background-color: #f1f1f1;
+    transition: 0.3s;
+}
+
+/* INPUT FIELD */
+input[type=text],
+input[type=date],
+input[type=number] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.3s;
+}
+
+/* INPUT FOCUS */
+input:focus {
+    border-color: #4facfe;
+    box-shadow: 0 0 5px rgba(79, 172, 254, 0.5);
+}
+
+/* BUTTON */
+button,
+input[type="submit"] {
+    background: linear-gradient(to right, #11998e, #38ef7d);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: 0.3s;
+}
+
+/* BUTTON HOVER */
+button:hover,
+input[type="submit"]:hover {
+    transform: scale(1.05);
+    background: linear-gradient(to right, #0f9b8e, #30e07c);
+}
+
+/* CARD STYLE (OPTIONAL) */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* HEADINGS */
+h1, h2, h3 {
+    color: #222;
+}

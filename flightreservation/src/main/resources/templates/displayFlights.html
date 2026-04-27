@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Available Flights</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+        body { display: flex; flex-direction: column; min-height: 100vh; }
+
+        .navbar {
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .main { padding: 40px; flex: 1; }
+
+        .table-container {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .btn-select {
+            padding: 6px 14px;
+            background: #11998e;
+            color: white;
+            border-radius: 20px;
+            text-decoration: none;
+        }
+        .navbar a {
+            color: #f1f1f1;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <div><b>✈️ FlyHigh</b></div>
+    <div>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/findFlights}">Search</a>
+    </div>
+</div>
+
+<div class="main">
+
+    <h2>Available Flights ✈️</h2>
+
+    <!--  NO FLIGHTS -->
+    <div th:if="${#lists.isEmpty(flights)}" class="no-data">
+        ❌ No flights found for selected route and date.
+    </div>
+
+    <!-- ✅ FLIGHTS TABLE -->
+    <div th:if="${!#lists.isEmpty(flights)}" class="table-container">
+
+        <table>
+            <tr>
+                <th>Airlines</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Action</th>
+            </tr>
+
+            <tr th:each="flight : ${flights}">
+                <td th:text="${flight.operatingAirlines}"></td>
+                <td th:text="${flight.departureCity}"></td>
+                <td th:text="${flight.arrivalCity}"></td>
+
+                <!-- ✅ DATE FORMAT -->
+                <td th:text="${#dates.format(flight.dateOfDeparture, 'dd MMM yyyy')}"></td>
+
+                <!-- ✅ TIME FORMAT -->
+                <td th:text="${#dates.format(flight.estimatedDepartureTime, 'HH:mm')}"></td>
+
+                <td>
+                    <a class="btn-select"
+                       th:href="@{'/showCompleteReservation?flightId=' + ${flight.id}}">
+                        Select
+                    </a>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>

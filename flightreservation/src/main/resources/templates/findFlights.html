@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Find Flights</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: #f1f1f1;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        /* CENTER */
+        .main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* CARD */
+        .card {
+            width: 520px;
+            padding: 40px;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: 500;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        input:focus {
+            border-color: #4ca1af;
+            outline: none;
+        }
+
+        .btn-search {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #11998e, #38ef7d);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-search:hover {
+            transform: scale(1.03);
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div><b>✈️ FlyHigh</b></div>
+
+    <div>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/showLogin}">Login</a>
+    </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <div class="card">
+
+        <h2>Search Flights ✈️</h2>
+
+        <form th:action="@{/findFlights}" method="post">
+
+            <div class="form-group">
+                <label>From</label>
+                <input type="text" name="from" placeholder="Departure City" required/>
+            </div>
+
+            <div class="form-group">
+                <label>To</label>
+                <input type="text" name="to" placeholder="Arrival City" required/>
+            </div>
+
+            <div class="form-group">
+                <label>Departure Date</label>
+                <!-- ✅ SIMPLE DATE INPUT -->
+                <input type="text" name="departureDate" placeholder="Enter date (yyyy-mm-dd)" required/>
+            </div>
+
+            <button class="btn-search">Search Flights</button>
+
+        </form>
+
+        <!-- ERROR -->
+        <p class="error" th:text="${error}"></p>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Booking Confirmed</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #11998e, #38ef7d);
+        }
+
+        .success-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            max-width: 550px;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .success-icon {
+            font-size: 60px;
+            color: green;
+            animation: pop 0.5s ease;
+        }
+
+        h2 { margin: 15px 0; }
+
+        p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .pnr-box {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-size: 18px;
+        }
+
+        .btn {
+            margin-top: 15px;
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .btn-download {
+            background: #2c3e50;
+            color: white;
+        }
+
+        .btn-home {
+            background: #11998e;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .email-preview {
+            background: #fafafa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .error-box {
+            color: red;
+            margin-top: 15px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pop {
+            0% { transform: scale(0.5); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="success-card">
+
+    <div class="success-icon">✅</div>
+
+    <h2>Booking Confirmed!</h2>
+
+    <!-- ✅ SAFE CHECK -->
+    <div th:if="${reservation != null}">
+
+        <!-- 🔥 PNR -->
+        <div class="pnr-box">
+            Booking ID / PNR:
+            <b th:text="${reservation.id}"></b>
+        </div>
+
+        <p>Your flight has been successfully booked. ✈️</p>
+
+        <p>
+            A confirmation email along with your <b>e-ticket (PDF)</b>
+            has been sent to your registered email address.
+        </p>
+
+        <!-- 📄 DOWNLOAD -->
+        <a th:href="@{'/downloadItinerary?reservationId=' + ${reservation.id}}">
+            <button class="btn btn-download">📄 Download Ticket</button>
+        </a>
+
+        <!-- 📧 EMAIL PREVIEW -->
+        <div class="email-preview">
+            <b>Email Sent:</b><br><br>
+
+            Dear
+            <span th:text="${reservation.passenger.firstName}"></span>,<br><br>
+
+            Your booking has been confirmed.<br>
+            Please find your e-ticket attached.<br><br>
+
+            Booking ID: <b th:text="${reservation.id}"></b><br>
+            Flight: <span th:text="${reservation.flight.flightNumber}"></span><br><br>
+
+            Thank you for choosing FlyHigh ✈️
+        </div>
+
+    </div>
+
+    <!-- ❌ FALLBACK -->
+    <div th:if="${reservation == null}" class="error-box">
+        ⚠️ Reservation details not available. Please try again.
+    </div>
+
+    <p>
+        Please carry a valid ID proof during check-in.
+        We wish you a pleasant journey!
+    </p>
+
+    <a th:href="@{/}">
+        <button class="btn btn-home">Go to Home</button>
+    </a>
+
+</div>
+
+</body>
+</html>

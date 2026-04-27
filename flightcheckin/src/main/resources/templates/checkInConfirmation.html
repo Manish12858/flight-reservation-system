@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Check-In Confirmation</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(to right, #11998e, #38ef7d);
+            font-family: Arial, sans-serif;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: #f1f1f1;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        /* CENTER */
+        .main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* CARD */
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            width: 450px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        h2 {
+            color: green;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin: 10px 0;
+            color: #555;
+        }
+
+        h3 {
+            margin-top: 20px;
+        }
+
+        /* BUTTON */
+        .btn {
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            color: white;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* ANIMATION */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ✅ NAVBAR -->
+<div class="navbar">
+    <div><b>✈️ FlyHigh</b></div>
+
+    <div>
+        <a href="http://localhost:8080/">Home</a>
+        <a href="http://localhost:8080/findFlights">Book Flight</a>
+        <a href="http://localhost:8081/flightcheckin/showStartCheckIn">Check-In</a>
+    </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <div class="card">
+
+        <h2>✅ Check-In Successful</h2>
+
+        <!-- Dynamic message -->
+        <p th:text="${msg}">
+            Your check-in has been completed successfully.
+        </p>
+
+        <hr>
+
+        <h3>✈️ Ready for Boarding!</h3>
+
+        <p>
+            Please arrive at the airport at least <b>2 hours before departure</b>.
+        </p>
+
+        <p>
+            Have a safe and pleasant journey with <b>FlyHigh</b> ✈️
+        </p>
+
+        <!-- BUTTON -->
+        <a th:href="@{/showStartCheckIn}" class="btn">
+            Start New Check-In
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

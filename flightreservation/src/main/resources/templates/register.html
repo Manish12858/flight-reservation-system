@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: #f1f1f1;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+        }
+
+        .navbar a:hover {
+            color: white;
+        }
+
+        /* CENTER */
+        .main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* CARD */
+        .card {
+            width: 420px;
+            padding: 40px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        /* INPUT */
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        input:focus {
+            border-color: #4ca1af;
+            outline: none;
+        }
+
+        /* BUTTON */
+        .btn-register {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #43e97b, #38f9d7);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-register:hover {
+            transform: scale(1.03);
+        }
+
+        /* LOGIN LINK */
+        .login-link {
+            margin-top: 15px;
+        }
+
+        .login-link a {
+            color: #4ca1af;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div><b>✈️ FlyHigh</b></div>
+
+    <div>
+        <a th:href="@{/showLogin}">Login</a>
+        <a th:href="@{/showRegister}">Register</a>
+    </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <div class="card">
+
+        <h2>Create Account</h2>
+
+        <form th:action="@{/register}" method="post">
+
+            <input name="firstName" placeholder="First Name" required/>
+            <input name="lastName" placeholder="Last Name" required/>
+            <input type="email" name="email" placeholder="Email" required/>
+
+            <!-- ✅ NEW PHONE FIELD -->
+            <input type="tel" name="phone"
+                   placeholder="Phone Number"
+                   pattern="[0-9]{10}"
+                   title="Enter 10 digit phone number"
+                   required/>
+
+            <input type="password" name="password" placeholder="Password" required/>
+
+            <button class="btn-register">Register</button>
+
+        </form>
+
+        <!-- LOGIN OPTION -->
+        <div class="login-link">
+            <p>
+                Already have an account?
+                <a th:href="@{/showLogin}">Login here</a>
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

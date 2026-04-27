@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Flight</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: #f1f1f1;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        /* CENTER */
+        .main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* CARD */
+        .card {
+            width: 500px;
+            padding: 40px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        input:focus {
+            border-color: #4ca1af;
+            outline: none;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #11998e, #38ef7d);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover {
+            transform: scale(1.03);
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div><b>✈️ FlyHigh Admin</b></div>
+
+    <div>
+        <a th:href="@{/}">Home</a>
+    </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <div class="card">
+
+        <h2>Add Flight ✈️</h2>
+
+        <form th:action="@{/saveFlight}" method="post">
+
+            <input name="flightNumber" placeholder="Flight Number" required/>
+            <input name="operatingAirlines" placeholder="Operating Airlines" required/>
+            <input name="departureCity" placeholder="Departure City" required/>
+            <input name="arrivalCity" placeholder="Arrival City" required/>
+
+            <label style="text-align:left; display:block;">Departure Date</label>
+            <input type="date" name="dateOfDeparture" required/>
+
+            <label style="text-align:left; display:block;">Estimated Departure Time</label>
+            <input type="datetime-local" name="estimatedDepartureTime" required/>
+
+            <button class="btn-submit">Add Flight</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>
